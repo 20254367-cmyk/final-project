@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Services - Karl Garage</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <img src="logo.webp" class="logo">
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="moto parts.html">Moto Parts</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="card">
+    <h2>Our Services</h2>
+    <p>Click a service to book an appointment.</p>
+
+    <div class="services">
+
+        <div onclick="openBooking('Oil Change')">
+            <h3>Oil Change</h3>
+            <p>Fast engine oil replacement service.</p>
+        </div>
+
+        <div onclick="openBooking('Engine Repair')">
+            <h3>Engine Repair</h3>
+            <p>Complete engine diagnostics and repair.</p>
+        </div>
+
+        <div onclick="openBooking('Brake Service')">
+            <h3>Brake Service</h3>
+            <p>Brake pad replacement and safety check.</p>
+        </div>
+
+        <div onclick="openBooking('Tire Replacement')">
+            <h3>Tire Replacement</h3>
+            <p>Install new tires and wheel balancing.</p>
+        </div>
+
+        <div onclick="openBooking('Battery Service')">
+            <h3>Battery Service</h3>
+            <p>Battery testing and replacement.</p>
+        </div>
+
+        <div onclick="openBooking('Full Maintenance')">
+            <h3>Full Maintenance</h3>
+            <p>Complete motorcycle check-up.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div id="bookingModal" class="modal">
+
+    <div class="modal-content">
+        <h2 id="serviceTitle">Book Service</h2>
+
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="date" id="date">
+        <input type="text" id="location" placeholder="Your Location">
+
+        <button onclick="submitBooking()">Submit</button>
+        <button onclick="closeBooking()" class="close-btn">Close</button>
+    </div>
+
+</div>
+
+<script>
+let selectedService = "";
+
+function openBooking(service) {
+    selectedService = service;
+    document.getElementById("serviceTitle").innerText = "Book: " + service;
+    document.getElementById("bookingModal").style.display = "flex";
+}
+
+function closeBooking() {
+    document.getElementById("bookingModal").style.display = "none";
+}
+
+function submitBooking() {
+    let name = document.getElementById("name").value;
+    let date = document.getElementById("date").value;
+    let location = document.getElementById("location").value;
+
+    if (!name || !date || !location) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    alert(
+        "Booking Confirmed!\n\n" +
+        "Service: " + selectedService +
+        "\nName: " + name +
+        "\nDate: " + date +
+        "\nLocation: " + location
+    );
+
+    closeBooking();
+}
+</script>
+
+</body>
+</html>

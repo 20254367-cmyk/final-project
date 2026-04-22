@@ -1,48 +1,76 @@
-{
+/* =========================
+   RESET
+========================= */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
+/* =========================
+   BODY
+========================= */
 body {
     background: #0a0a0a;
     color: white;
+    line-height: 1.5;
 }
 
-/* NAVBAR */
+/* =========================
+   HEADER
+========================= */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
     background: black;
+    padding: 15px 30px;
 }
 
-.logo img {
-    height: 50px;
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 60px;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 nav a {
-    margin: 0 15px;
     color: white;
     text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.btn {
-    background: red;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+nav a:hover {
+    color: red;
 }
 
-/* HERO */
+/* CART */
+.cart {
+    margin-left: auto;
+    background: #111;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px red;
+    font-weight: bold;
+}
+
+/* =========================
+   HERO
+========================= */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 50px;
+    padding: 60px;
     background: black;
 }
 
@@ -55,50 +83,228 @@ nav a {
 }
 
 .hero-text span {
-    color: red;
+    color: rgb(177, 31, 31);
 }
 
-.hero-img img {
-    width: 500px;
-    filter: drop-shadow(0 0 10px red);
+.hero-text p {
+    margin: 15px 0;
+    color: #ccc;
 }
 
-/* INFO */
-.info {
-    display: flex;
-    padding: 40px;
-    gap: 20px;
-    background: #111;
+.hero-image img {
+    width: 400px;
+    filter: drop-shadow(0 0 15px black);
 }
 
+/* BUTTON */
+.btn {
+    display: inline-block;
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: darkred;
+}
+
+/* =========================
+   CARD
+========================= */
 .card {
-    flex: 1;
     background: #1a1a1a;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* =========================
+   MAP
+========================= */
+.map {
+    padding: 60px 40px;
+    background: #111;
+    text-align: center;
+}
+
+.map h2 {
+    margin-bottom: 15px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px red;
+}
+
+/* =========================
+   SERVICES
+========================= */
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.services div {
+    background: #222;
     padding: 20px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
 }
 
-.services {
-    display
+.services div:hover {
+    background: red;
+    transform: scale(1.05);
 }
-    footer {
+
+.services h3 {
+    margin-bottom: 8px;
+}
+
+.services p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+/* =========================
+   PARTS GRID
+========================= */
+.parts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* PART CARD */
+.part {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 260px;
+    transition: 0.3s;
+}
+
+.part:hover {
+    transform: scale(1.05);
+    background: #2a2a2a;
+}
+
+.part img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.part h3 {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.price {
+    color: red;
+    font-weight: bold;
+}
+
+/* BUY BUTTON */
+.buy {
+    padding: 8px;
+    background: red;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy:hover {
+    background: darkred;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close-btn {
+    background: gray !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+    .hero {
+        flex-direction: column;
         text-align: center;
-        padding: 15px;
-        background: black;
     }
-    
-    footer .social {
-        margin-top: 10px;
+
+    .hero-text {
+        max-width: 100%;
     }
-    
-    footer .social a {
-        color: white;
-        margin: 0 10px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
+
+    .hero-image img {
+        width: 250px;
+        margin-top: 20px;
     }
-    
-    footer .social a:hover {
-        color: red;
+
+    .parts-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+}

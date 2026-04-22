@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moto Parts - Karl Garage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <img src="logo.webp" class="logo">
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="moto-parts.html">Moto Parts</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact</a>
+
+            <div class="cart">
+                🛒 <span id="cart-count">0</span> | ₱<span id="cart-total">0</span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="card">
+    <h2>Moto Parts Shop</h2>
+
+    <div class="parts-grid">
+
+        <div class="part">
+            <img src="engine.webp">
+            <h3>Engine</h3>
+            <p class="price">₱5,000</p>
+            <button class="buy" onclick="addToCart('Engine', 5000)">Add</button>
+        </div>
+
+        <div class="part">
+            <img src="piston.jpg">
+            <h3>Piston</h3>
+            <p class="price">₱800</p>
+            <button class="buy" onclick="addToCart('Piston', 800)">Add</button>
+        </div>
+
+        <div class="part">
+            <img src="spark plug.jfif">
+            <h3>Spark Plug</h3>
+            <p class="price">₱150</p>
+            <button class="buy" onclick="addToCart('Spark Plug', 150)">Add</button>
+        </div>
+
+        <div class="part">
+            <img src="carburetors.jfif">
+            <h3>Carburetor</h3>
+            <p class="price">₱1,200</p>
+            <button class="buy" onclick="addToCart('Carburetor', 1200)">Add</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- VERY VISIBLE CHECKOUT BUTTON -->
+<div class="bottom-bar">
+    <button onclick="checkout()">🛒 CHECKOUT NOW</button>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// SAVE CART
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartUI();
+}
+
+// ADD TO CART
+function addToCart(name, price) {
+    cart.push({ name, price });
+    saveCart();
+    alert(name + " added to cart!");
+}
+
+// UPDATE CART UI
+function updateCartUI() {
+    let count = cart.length;
+    let total = cart.reduce((sum, item) => sum + item.price, 0);
+
+    document.getElementById("cart-count").textContent = count;
+    document.getElementById("cart-total").textContent = total;
+}
+
+// CHECKOUT + CLEAR CART 🔥
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let text = "CHECKOUT SUMMARY\n\n";
+    let total = 0;
+
+    cart.forEach((item, i) => {
+        text += `${i + 1}. ${item.name} - ₱${item.price}\n`;
+        total += item.price;
+    });
+
+    text += "\nTOTAL: ₱" + total;
+
+    alert(text);
+
+    // CLEAR CART AFTER BUYING
+    cart = [];
+    saveCart();
+}
+
+// LOAD ON START
+updateCartUI();
+</script>
+
+</body>
+</html>
